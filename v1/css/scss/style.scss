@@ -1,0 +1,451 @@
+/*
+  sass --watch C:\Users\Mi5a\Desktop\Full_duploma\Self-study\sass\css\scss:C:\Users\Mi5a\Desktop\Full_duploma\Self-study\sass\css --style compact
+*/
+@import 'templant/varibles';
+@import 'templant/mixins';
+@import 'templant/functions';
+
+@import 'layout/grid';
+/*-------------- 2. Preloader css starts ---------------*/
+.loader_bg {
+  position: fixed;
+  z-index: 9999999;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  .loader {
+    border: 0 solid transparent;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: calc(50vh - 75px);
+    left: calc(50vw - 75px);
+    &:before, &:after {
+      content: '';
+      border: 1em solid $mainColor;
+      border-radius: 50%;
+      width: inherit;
+      height: inherit;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: loader 2s linear infinite;
+      opacity: 0;
+    }
+    &:before {
+      animation-delay: .5s;
+    }
+
+  }
+}
+@keyframes loader {
+  0% {
+    transform: scale(0);
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    transform: scale(1);
+    opacity: 0; }
+}
+/*-------------- Preloader css ends ---------------*/
+/*start home page*/
+/*start chat*/
+.alert{
+  position: fixed;
+  top: 50vh;
+  right: 30vw;
+  z-index: 599999;
+  height: 56px;
+  box-shadow: 7px 4px 20px 0 $pColor;
+}
+.chat{
+  position: relative;
+  z-index: 9;
+  visibility: hidden;
+  .chat-icon{
+    max-width: 152px;
+    position: fixed;
+    background-color: $chat;
+    color: white;
+    padding: 12px 17px 12px 12px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 35px 0;
+    bottom: 3px;
+    right: 153px;
+    cursor: pointer;
+    box-shadow: 2px 7px 20px 0 $pColor;
+    p{
+      float: left;
+      margin: 0 12px;
+      text-transform:capitalize ;
+    }
+    i{margin-left: 2px;}
+    svg{color: white;}
+  }
+  form{
+    visibility: hidden;
+    max-width: 255px;
+    background-color: #02324c;
+    position: fixed;
+    bottom: 52px;
+    right: 131px;
+    border-radius: 25px;
+    padding: 9px;
+    .asterisk{
+      position: absolute;
+      top: 11px;
+      right: 8px;
+      z-index: 9;
+    }
+    textarea{height: 85px;resize: none}
+    input[type="submit"]{margin: auto;display: block}
+  }
+}
+/*end chat*/
+svg{color: $mainColor}
+.header{
+  background-image: url("../images/home-bg-2.jpg");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 9999;
+  .overlay{
+    position: absolute;
+    background-color: rgba($pColor,0.2);
+    top:0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .logo{
+    text-align: center;
+    border-bottom:1px solid $pColor;
+    float: $floatLeft;
+    h1{
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+    p{
+      color: $pColor;
+      text-transform: capitalize;
+    }
+  }
+  .nav{
+    @include prefixer(box-shadow,2px 3px 12px 2px $pColor);
+    float: $floatRight;
+    background-color: $mainColor;
+    border: 1px solid $pColor;
+    border-radius: 25px;
+    text-transform: capitalize;
+    text-align: center;
+    font-size:20px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 10px;
+    .nav-item{
+      width: 20%;
+    }
+    .active{
+      a{
+        //color: $aHover;
+        color: white;//work on  scroll spy
+      }
+    }
+    .nav-link{
+      color: #fff;
+      &:hover{
+        color: $aHover;
+      }
+    }
+  }
+  .title{
+    text-align: center;
+    margin-top: 15%;
+    h1{
+      text-transform: uppercase;
+    }
+    #flip {
+      height:100px;
+      overflow:hidden;
+      font-size: 36px;
+      > div > div {
+        color:#fff;
+        padding:4px 12px;
+        height:70px;
+        margin-bottom:31px;
+        display:inline-block;
+      }
+      div:first-child {
+        animation: show 5s linear infinite;
+      }
+      div div {
+        background:#42c58a;
+      }
+      div:first-child div {
+        background:#4ec7f3;
+      }
+      div:last-child div {
+        background:#DC143C;
+      }
+    }
+    @keyframes show {
+      0% {margin-top:-270px;}
+      5% {margin-top:-180px;}
+      33% {margin-top:-180px;}
+      38% {margin-top:-90px;}
+      66% {margin-top:-90px;}
+      71% {margin-top:0;}
+      99.99% {margin-top:0;}
+      100% {margin-top:-270px;}
+    }
+  }
+  .down{
+    color: $chat;
+  }
+}
+#backtotop {
+  visibility: hidden;
+  position: fixed;
+  color: $chat;
+  bottom: 20px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 99;
+}
+.about{
+  padding-top:25px ;
+  .about-info{
+    text-align: center;
+    padding-top: 50px;
+    h1{
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+    p{
+      text-transform: lowercase;
+      &:first-of-type{
+        text-transform: uppercase;
+        color: $pColor;
+        margin-top: 0;
+      }
+      &:last-of-type{
+        text-align: left;
+        margin-top: 30px;
+        margin-bottom:30px ;
+        font-size: 20px;
+      }
+    }
+    a{
+      background-color: $mainColor;
+      color: #fff;
+      text-transform: uppercase;
+      float: right;
+      &:hover{
+        background-color: $aHover;
+      }
+    }
+  }
+  .about-skill{
+    padding-top:50px ;
+    h1{
+      margin-bottom: 20px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .skillbar {
+      margin-bottom: 24px;
+      position: relative;
+      width: 100%;
+      display: block;
+      .skillbar-title {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .skillbar-percent {
+        float: right;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .skillbar-bar {
+        background-color: #aaa;
+        width: 100%;
+        height: 5px;
+        .skillbar-child {
+          width: 0;
+          height: 100%;
+          background-color: $mainColor;
+          -webkit-transition-property: width, background-color;
+          -o-transition-property: width, background-color;
+          transition-property: width, background-color;
+        }
+      }
+      h6{
+        font-size: 15px;
+      }
+    }
+  }
+}
+.service{
+  .service-item{
+    text-align: center;
+    padding: 10px;
+    h3{
+      margin: 20px auto;
+      text-transform:capitalize ;
+    }
+    p{
+      color: $pColor;
+      text-transform: inherit;
+    }
+    &:hover{
+      box-shadow: 5px 5px 20px 0 $pColor;
+      border: solid 1px $pColor;
+      border-radius: 25px;
+      h3{color:$mainColor;}
+    }
+  }
+}
+.portfolio{
+  .portfolio-info{
+    padding: 30px;
+    text-transform: capitalize;
+    h1{
+      text-transform: capitalize;
+      margin-bottom: 0;
+    }
+    blockquote{
+      margin: 0;
+      margin-bottom: 10px;
+      font-size:10px ;
+    }
+    p{
+      font-size:25px;
+      margin-bottom: 0;
+    }
+    .portfolio-info-login{
+      margin-left: 50px;
+      margin-bottom: 25px;
+    }
+    a{
+      background-color: $mainColor;
+      color: #fff;
+      text-transform: uppercase;
+      display: block;
+      &:hover{
+        background-color: $aHover;
+      }
+    }
+  }
+}
+.contact{
+  .contact-info{
+    text-align: center;
+    & .contact-info-item{
+      width: 70%;
+      padding: 10px;
+      border: solid 1px $pColor;
+      border-radius: 20px;
+      svg{
+        color: $mainColor;
+      }
+      h3{
+        text-transform: capitalize;
+        color: $mainColor;
+      }
+      p{
+        color: $pColor;
+      }
+      &:hover{
+        box-shadow: 0 20px 40px  $pColor;
+      }
+    }
+  }
+}
+footer{
+  margin-top: 30px;
+  text-transform: capitalize;
+  text-align: center;
+  background-color: #000;
+  padding: 30px;
+  color: #fff;
+  span{
+    color: $mainColor;
+  }
+}
+/*end home page*/
+
+.head-bourder{
+  position: relative;
+ h2 {
+   text-align: center;
+   text-transform: capitalize;
+   background-color: $mainColor;
+   color: #fff;
+   margin: 40px auto;
+   border-radius: 25px;
+   width: 400px;
+   padding: 10px 15px;
+   &:before {
+     content: '';
+     width: 100%;
+     height: 3px;
+     background-color: $mainColor;
+     position: absolute;
+     top: 50%;
+     right: 0;
+     z-index: -1;
+   }
+ }
+}
+@media (max-width: $maxMobile) {
+  .header {
+    .logo {
+      max-width: 65%;
+    }
+    .nav{
+      max-width: 100%;
+      font-size: 15px;
+      font-weight: normal;
+      padding: 0;
+      top:10px;
+      .nav-link {
+        padding: 8px;
+      }
+    }
+  }
+  .title {
+    margin-top: 30vh!important;
+    #flip {
+      height: 50px!important;
+      font-size: 26px!important;
+      > div > div {
+        height: 45px!important;
+        margin-bottom: 45px!important;
+      }
+    }
+  }
+  .portfolio {
+    .portfolio-info {
+      h1 {
+        font-size: 35px;
+      }
+      p{
+        font-size: 22px;
+      }
+      .portfolio-info-login {
+        margin-left: 35px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .head-bourder {
+    h2 {
+      width: 200px;
+    }
+  }
+}
+
